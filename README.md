@@ -1,51 +1,57 @@
-# D3
+# D3: Data-Driven Documents
 
-**D3** is a small, free JavaScript library for manipulating HTML documents
-based on data. D3 can help you quickly visualize your data as HTML or SVG,
-handle interactivity, and incorporate smooth transitions and staged animations
-into your pages. You can use D3 as a visualization framework (like Protovis),
-or you can use it to build dynamic pages (like jQuery).
+<a href="https://d3js.org"><img src="https://d3js.org/logo.svg" align="left" hspace="10" vspace="6"></a>
 
-### Browser Support
+**D3** (or **D3.js**) is a JavaScript library for visualizing data using web standards. D3 helps you bring data to life using SVG, Canvas and HTML. D3 combines powerful visualization and interaction techniques with a data-driven approach to DOM manipulation, giving you the full capabilities of modern browsers and the freedom to design the right visual interface for your data.
 
-D3 should work on any browser, with minimal requirements such as JavaScript
-and the [W3C DOM](http://www.w3.org/DOM/) API. By default D3 requires the
-[Selectors API](http://www.w3.org/TR/selectors-api/) Level 1, but you can
-preload [Sizzle](http://sizzlejs.com/) for compatibility with older browsers.
-Some of the included D3 examples use additional browser features, such as
-[SVG](http://www.w3.org/TR/SVG/) and [CSS3
-Transitions](http://www.w3.org/TR/css3-transitions/). These features are not
-required to use D3, but are useful for visualization! D3 is not a
-compatibility layer. The examples should work on Firefox, Chrome (Chromium),
-Safari (WebKit), Opera and IE9.
+## Resources
 
-Note: Chrome has strict permissions for reading files out of the local file
-system. Some examples use AJAX which works differently via HTTP instead of local
-files. For the best experience, load the D3 examples from your own machine via
-HTTP. Any static file web server will work; for example you can run Python's
-built-in server:
+* [Introduction](https://observablehq.com/@d3/learn-d3)
+* [API Reference](https://github.com/d3/d3/blob/master/API.md)
+* [Releases](https://github.com/d3/d3/releases)
+* [Examples](https://observablehq.com/@d3/gallery)
+* [Wiki](https://github.com/d3/d3/wiki)
 
-    python -m SimpleHTTPServer 8888
+## Installing
 
-Once this is running, go to: <http://localhost:8888/examples/>
+If you use npm, `npm install d3`. Otherwise, download the [latest release](https://github.com/d3/d3/releases/latest). The released bundle supports anonymous AMD, CommonJS, and vanilla environments. You can load directly from [d3js.org](https://d3js.org), [CDNJS](https://cdnjs.com/libraries/d3), or [unpkg](https://unpkg.com/d3/). For example:
 
-### Development Setup
+```html
+<script src="https://d3js.org/d3.v6.js"></script>
+```
 
-This repository should work out of the box if you just want to create new
-visualizations using D3. On the other hand, if you want to extend D3 with new
-features, fix bugs, or run tests, you'll need to install a few more things.
+For the minified version:
 
-D3's test framework uses [Vows](http://vowsjs.org), which depends on
-[Node.js](http://nodejs.org/) and [NPM](http://npmjs.org/). If you are
-developing on Mac OS X, an easy way to install Node and NPM is using
-[Homebrew](http://mxcl.github.com/homebrew/):
+```html
+<script src="https://d3js.org/d3.v6.min.js"></script>
+```
 
-    brew install node
-    brew install npm
+You can also use the standalone D3 microlibraries. For example, [d3-selection](https://github.com/d3/d3-selection):
 
-Next, from the root directory of this repository, install D3's dependencies:
+```html
+<script src="https://d3js.org/d3-selection.v2.js"></script>
+```
 
-    make install
+D3 is written using [ES2015 modules](http://www.2ality.com/2014/09/es6-modules-final.html). Create a [custom bundle using Rollup](https://bl.ocks.org/mbostock/bb09af4c39c79cffcde4), Webpack, or your preferred bundler. To import D3 into an ES2015 application, either import specific symbols from specific D3 modules:
 
-You can see the list of dependencies in package.json. NPM will install the
-packages in the node_modules directory.
+```js
+import {scaleLinear} from "d3-scale";
+```
+
+Or import everything into a namespace (here, `d3`):
+
+```js
+import * as d3 from "d3";
+```
+
+In Node:
+
+```js
+const d3 = require("d3");
+```
+
+You can also require individual modules and combine them into a `d3` object using [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign):
+
+```js
+const d3 = Object.assign({}, require("d3-format"), require("d3-geo"), require("d3-geo-projection"));
+```
